@@ -23,6 +23,9 @@ intents.message_content = True
 # Initialize the bot
 bot = commands.Bot(command_prefix="!", intents=intents)
 
+# Keywords
+keyword = ["top gainers"]
+
 # OpenAI API Key
 openai.api_key = OPENAI_API_KEY
 
@@ -36,7 +39,6 @@ async def ask(ctx, *, question: str):
     """
     Respond to a user query using OpenAI's GPT API with integrated CoinGecko data.
     """
-    await ctx.send("Thinking... 🤔")
     try:
         # Check if the question is about top gainers or crypto updates
         if any(keyword in question.lower() for keyword in ["top gainers", "crypto updates", "cryptocurrency", "blockchain", "bitcoin", "ethereum", "market trends", "altcoins", "price changes"]):
